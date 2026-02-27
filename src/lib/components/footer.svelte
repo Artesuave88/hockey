@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { resolve } from '$app/paths';
-	import { Mail, Twitter } from 'lucide-svelte';
+	import { Instagram, Mail, Twitter } from 'lucide-svelte';
 
 	import Logo from '$lib/components/logo.svelte';
 </script>
@@ -24,6 +24,15 @@
 		</div>
 
 		<div class="flex items-center gap-2">
+			<a
+				href="https://www.instagram.com/nottingham_phantoms/"
+				target="_blank"
+				rel="noreferrer"
+				class="inline-flex items-center gap-1.5 rounded-md border border-white/20 bg-white/5 px-3 py-1.5 text-xs text-[var(--text-primary)] transition duration-300 hover:scale-105 hover:border-[var(--color-accent)] hover:text-[var(--color-accent)]"
+			>
+				<Instagram size={14} />
+				<span>@nottingham_phantoms</span>
+			</a>
 			<a
 				href="https://x.com/NottmPhantoms"
 				target="_blank"

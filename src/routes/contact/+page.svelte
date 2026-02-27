@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Card from '$lib/components/card.svelte';
-	import { Mail, Twitter } from 'lucide-svelte';
+	import { Instagram, Mail, Twitter } from 'lucide-svelte';
 
 	const handleSubmit = (event: SubmitEvent) => {
 		event.preventDefault();
@@ -40,6 +40,17 @@
 				class="block text-[var(--text-primary)] transition duration-300 hover:text-[var(--color-accent)]"
 			>
 				<span class="inline-flex items-center gap-2"><Twitter size={16} /> @NottmPhantoms</span>
+			</a>
+			<a
+				href="https://www.instagram.com/nottingham_phantoms/"
+				target="_blank"
+				rel="noreferrer"
+				class="block text-[var(--text-primary)] transition duration-300 hover:text-[var(--color-accent)]"
+			>
+				<span class="inline-flex items-center gap-2">
+					<Instagram size={16} />
+					@nottingham_phantoms
+				</span>
 			</a>
 		</div>
 	</Card>
