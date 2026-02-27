@@ -3,12 +3,14 @@
 @plugin '@tailwindcss/typography';
 
 :root {
-	--color-primary: #1e3a8a;
-	--color-accent: #ef4444;
-	--color-background-dark: #0f172a;
-	--color-background-light: #f8fafc;
-	--color-text: #f8fafc;
-	--color-ice-line: rgb(248 250 252 / 0.16);
+	--color-accent: #ff4500;
+	--color-accent-strong: #ea580c;
+	--ice-blue: #3b82f6;
+	--bg-start: #0f172a;
+	--bg-end: #111827;
+	--card-bg: #1e293b;
+	--text-primary: #f1f5f9;
+	--text-muted: #cbd5e1;
 }
 
 @theme inline {
@@ -17,14 +19,18 @@
 }
 
 @layer base {
+	* {
+		box-sizing: border-box;
+	}
+
 	body {
 		margin: 0;
 		min-height: 100vh;
-		color: var(--color-text);
+		color: var(--text-primary);
 		background:
-			radial-gradient(circle at 8% 12%, rgb(30 58 138 / 0.42), transparent 36%),
-			radial-gradient(circle at 92% 4%, rgb(239 68 68 / 0.22), transparent 40%),
-			linear-gradient(180deg, #111d3a 0%, #0f172a 56%, #0b1222 100%);
+			radial-gradient(circle at 10% 12%, rgb(30 64 175 / 0.34), transparent 35%),
+			radial-gradient(circle at 86% 8%, rgb(255 69 0 / 0.24), transparent 40%),
+			linear-gradient(165deg, var(--bg-start) 0%, var(--bg-end) 100%);
 		font-family: var(--font-body);
 	}
 
@@ -35,79 +41,46 @@
 	h5,
 	h6 {
 		font-family: var(--font-heading);
-		letter-spacing: 0.04em;
+		letter-spacing: 0.03em;
 	}
 
 	a {
-		color: var(--color-accent);
-	}
-
-	a:hover {
-		color: var(--color-text);
+		color: inherit;
+		text-decoration: none;
 	}
 
 	::selection {
-		background: rgb(239 68 68 / 0.35);
-		color: var(--color-text);
+		background: rgb(255 69 0 / 0.35);
+		color: var(--text-primary);
 	}
 }
 
 @layer components {
-	.ice-rink-hero {
-		background:
-			radial-gradient(circle at 10% 16%, rgb(30 58 138 / 0.35), transparent 34%),
-			radial-gradient(circle at 90% 84%, rgb(239 68 68 / 0.2), transparent 38%),
-			repeating-linear-gradient(
-				90deg,
-				transparent 0,
-				transparent 118px,
-				var(--color-ice-line) 118px,
-				var(--color-ice-line) 120px
-			),
-			repeating-linear-gradient(
-				0deg,
-				transparent 0,
-				transparent 88px,
-				var(--color-ice-line) 88px,
-				var(--color-ice-line) 90px
-			),
-			linear-gradient(150deg, rgb(15 23 42 / 0.96), rgb(20 35 75 / 0.9));
+	.logo-glow {
+		filter: drop-shadow(0 0 0.65rem rgb(255 69 0 / 0.45));
 	}
 
-	.ice-rink-hero::before,
-	.ice-rink-hero::after {
-		position: absolute;
-		border: 1px solid rgb(248 250 252 / 0.18);
-		border-radius: 9999px;
-		content: '';
+	.cta-glow {
+		box-shadow:
+			0 0 0.95rem rgb(255 69 0 / 0.38),
+			0 0.35rem 1.1rem rgb(0 0 0 / 0.35);
 	}
 
-	.ice-rink-hero::before {
-		top: -3.5rem;
-		right: -2.75rem;
-		width: 12rem;
-		height: 12rem;
+	.hover-card {
+		box-shadow: 0 0 0 transparent;
 	}
 
-	.ice-rink-hero::after {
-		bottom: -3rem;
-		left: -2rem;
-		width: 9rem;
-		height: 9rem;
+	.hover-card:hover {
+		border-color: rgb(255 69 0 / 0.42);
+		box-shadow:
+			0 0 0.9rem rgb(255 69 0 / 0.24),
+			0 0.45rem 1rem rgb(0 0 0 / 0.32);
 	}
 
-	.prose {
-		--tw-prose-body: var(--color-text);
-		--tw-prose-headings: #ffffff;
-		--tw-prose-links: var(--color-accent);
-		--tw-prose-bold: #ffffff;
-		--tw-prose-counters: rgb(248 250 252 / 0.7);
-		--tw-prose-bullets: rgb(248 250 252 / 0.5);
-		--tw-prose-quotes: var(--color-text);
-		--tw-prose-quote-borders: rgb(239 68 68 / 0.4);
-		--tw-prose-hr: rgb(248 250 252 / 0.2);
-		--tw-prose-captions: rgb(248 250 252 / 0.6);
-		--tw-prose-code: #ffffff;
-		--tw-prose-pre-bg: rgb(15 23 42 / 0.72);
+	.section-title {
+		font-size: 2rem;
+		line-height: 1.1;
+		font-weight: 700;
+		color: var(--text-primary);
 	}
 }

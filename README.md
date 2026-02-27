@@ -1,42 +1,37 @@
-# sv
+# Nottingham Phantoms IHC (SvelteKit)
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+Community-focused placeholder site for Nottingham Phantoms IHC, built with SvelteKit + TypeScript + Tailwind CSS.
 
-## Creating a project
+## Branding Asset Note
 
-If you're seeing this, you've probably already done this step. Congrats!
+- Active logo source is `src/lib/assets/logo.jpg`.
+- If a newer logo export is provided, replace that file.
+- TODO: generate `favicon.ico` from the logo for broad browser compatibility.
 
-```sh
-# create a new project
-npx sv create my-app
-```
+## Local Development
 
-To recreate this project with the same configuration:
-
-```sh
-# recreate this project
-npx sv create --template minimal --types ts --add prettier eslint tailwindcss="plugins:typography" --install npm blizzard-hockey
-```
-
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```sh
+```bash
+npm install
 npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
 ```
 
-## Building
+## Checks
 
-To create a production version of your app:
+```bash
+npm run lint
+npm run check
+```
 
-```sh
+## Production Build
+
+```bash
 npm run build
+npm run preview
 ```
 
-You can preview the production build with `npm run preview`.
+## Deploy to Vercel
 
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+- `vercel.json` is configured with:
+  - `cleanUrls: true`
+  - `trailingSlash: false`
+- Deploy from Vercel dashboard or Vercel CLI using the project root.
