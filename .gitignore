@@ -1,0 +1,13 @@
+node_modules
+
+# Build and generated artifacts
+.svelte-kit
+build
+dist
+.vercel
+
+# Local environment files
+.DS_Store
+.env
+.env.*
+!.env.example
