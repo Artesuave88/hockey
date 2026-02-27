@@ -1,37 +1,74 @@
 <script lang="ts">
-	import { resolve } from '$app/paths';
+	const sections = [
+		{
+			id: 'about',
+			title: 'About',
+			copy: 'Friendly, inclusive recreational hockey in Nottingham.'
+		},
+		{
+			id: 'roster',
+			title: 'Roster',
+			copy: 'Current squad list and player profiles coming soon.'
+		},
+		{
+			id: 'fixtures-results',
+			title: 'Fixtures & Results',
+			copy: 'Upcoming games, scorelines, and match reports placeholder.'
+		},
+		{
+			id: 'news',
+			title: 'News',
+			copy: 'Club announcements, recaps, and updates will appear here.'
+		},
+		{
+			id: 'stats',
+			title: 'Stats',
+			copy: 'Season and player statistics section placeholder.'
+		},
+		{
+			id: 'sponsors',
+			title: 'Sponsors',
+			copy: 'Partner logos and sponsor acknowledgements coming soon.'
+		},
+		{
+			id: 'contact',
+			title: 'Contact',
+			copy: 'Contact form and team email details placeholder.'
+		},
+		{
+			id: 'training',
+			title: 'Training',
+			copy: 'Training times, location, and joining information placeholder.'
+		}
+	];
 </script>
 
 <section
-	class="relative overflow-hidden rounded-2xl border border-white/10 bg-[rgb(10_20_40_/_0.7)] px-6 py-12 shadow-xl sm:px-10"
+	id="home"
+	class="ice-rink-hero relative overflow-hidden rounded-2xl border border-white/10 px-6 py-12 shadow-xl sm:px-10"
 >
-	<div
-		class="absolute -top-16 -right-14 h-40 w-40 rounded-full bg-[var(--color-accent)]/20 blur-3xl"
-	></div>
-	<div
-		class="absolute -bottom-20 left-10 h-44 w-44 rounded-full bg-[var(--color-danger)]/20 blur-3xl"
-	></div>
-
-	<div class="relative max-w-2xl space-y-5">
-		<p class="text-sm font-semibold tracking-[0.22em] text-[var(--color-accent)]">HOME ICE</p>
+	<div class="relative max-w-3xl space-y-4">
+		<p class="text-sm font-semibold tracking-[0.22em] text-[var(--color-accent)]">
+			NOTTINGHAM PHANTOMS IHC
+		</p>
 		<h1 class="text-4xl font-bold tracking-wide text-white uppercase sm:text-5xl">
-			Blizzard Hockey Hub
+			Recreational Ice Hockey Club
 		</h1>
 		<p class="text-base leading-relaxed text-white/80 sm:text-lg">
-			Everything fans need in one place: team roster updates, full season schedule, game-night
-			galleries, and breaking news.
+			This is the new home-page placeholder for Nottingham Phantoms IHC. Full content for fixtures,
+			roster, stats, and news will be added next.
 		</p>
-		<div class="flex flex-wrap gap-3">
-			<a
-				href={resolve('/schedule')}
-				class="rounded-md bg-[var(--color-accent)] px-4 py-2 text-sm font-semibold text-[var(--color-background)] transition-colors hover:bg-white"
-				>View Schedule</a
-			>
-			<a
-				href={resolve('/tickets')}
-				class="rounded-md border border-[var(--color-accent)] px-4 py-2 text-sm font-semibold text-[var(--color-accent)] transition-colors hover:bg-[var(--color-accent)]/10"
-				>Get Tickets</a
-			>
-		</div>
 	</div>
+</section>
+
+<section class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+	{#each sections as section (section.id)}
+		<article
+			id={section.id}
+			class="scroll-mt-24 rounded-xl border border-white/10 bg-[rgb(248_250_252_/_0.04)] p-5"
+		>
+			<h2 class="text-xl font-semibold text-white">{section.title}</h2>
+			<p class="mt-2 text-sm leading-relaxed text-white/75">{section.copy}</p>
+		</article>
+	{/each}
 </section>
