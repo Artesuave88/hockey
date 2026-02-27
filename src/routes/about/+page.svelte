@@ -3,7 +3,7 @@
 	import Card from '$lib/components/card.svelte';
 </script>
 
-<section class="rounded-3xl border border-white/10 bg-[rgb(30_41_59_/_0.72)] p-6 sm:p-8">
+<section class="rounded-3xl border border-white/10 bg-[rgb(51_65_85_/_0.6)] p-6 sm:p-8">
 	<div class="flex flex-col items-center text-center">
 		<Logo size="lg" className="rounded-xl" />
 		<p class="mt-4 text-xs font-semibold tracking-[0.16em] text-[var(--color-accent)] uppercase">

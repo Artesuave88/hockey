@@ -81,7 +81,7 @@
 	</div>
 </section>
 
-<section class="mt-8 rounded-2xl border border-white/10 bg-[rgb(30_41_59_/_0.72)] p-5 sm:p-6">
+<section class="mt-8 rounded-2xl border border-white/10 bg-[rgb(51_65_85_/_0.6)] p-5 sm:p-6">
 	<p class="text-xs font-semibold tracking-[0.15em] text-[var(--color-accent)] uppercase">
 		Quick Links
 	</p>

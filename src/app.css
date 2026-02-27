@@ -6,11 +6,11 @@
 	--color-accent: #ff4500;
 	--color-accent-strong: #ea580c;
 	--ice-blue: #3b82f6;
-	--bg-start: #0f172a;
-	--bg-end: #111827;
-	--card-bg: #1e293b;
+	--bg-start: #2563eb;
+	--bg-end: #475569;
+	--card-bg: #415a72;
 	--text-primary: #f1f5f9;
-	--text-muted: #cbd5e1;
+	--text-muted: #e2e8f0;
 }
 
 @theme inline {
@@ -28,8 +28,9 @@
 		min-height: 100vh;
 		color: var(--text-primary);
 		background:
-			radial-gradient(circle at 10% 12%, rgb(30 64 175 / 0.34), transparent 35%),
-			radial-gradient(circle at 86% 8%, rgb(255 69 0 / 0.24), transparent 40%),
+			radial-gradient(circle at 10% 12%, rgb(186 230 253 / 0.52), transparent 40%),
+			radial-gradient(circle at 86% 8%, rgb(255 69 0 / 0.32), transparent 45%),
+			radial-gradient(circle at 55% 110%, rgb(203 213 225 / 0.26), transparent 58%),
 			linear-gradient(165deg, var(--bg-start) 0%, var(--bg-end) 100%);
 		font-family: var(--font-body);
 	}

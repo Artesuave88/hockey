@@ -55,7 +55,7 @@
 	></div>
 
 	<header
-		class="sticky top-0 z-40 border-b border-white/10 bg-[rgb(15_23_42_/_0.9)] backdrop-blur-md"
+		class="sticky top-0 z-40 border-b border-white/10 bg-[rgb(51_65_85_/_0.68)] backdrop-blur-md"
 	>
 		<nav class="mx-auto flex h-22 w-full max-w-6xl items-center justify-between px-4 sm:px-6">
 			<a
@@ -112,7 +112,7 @@
 	></button>
 
 	<aside
-		class={`fixed top-0 right-0 z-50 h-full w-[82%] max-w-sm border-l border-white/10 bg-[rgb(15_23_42_/_0.98)] p-6 shadow-2xl transition-transform duration-300 md:hidden ${mobileMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}
+		class={`fixed top-0 right-0 z-50 h-full w-[82%] max-w-sm border-l border-white/10 bg-[rgb(51_65_85_/_0.84)] p-6 shadow-2xl transition-transform duration-300 md:hidden ${mobileMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}
 	>
 		<div class="mb-8 flex items-center justify-between">
 			<a

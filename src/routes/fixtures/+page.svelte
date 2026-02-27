@@ -3,7 +3,7 @@
 	import { CalendarDays, MapPin } from 'lucide-svelte';
 </script>
 
-<section class="rounded-3xl border border-white/10 bg-[rgb(30_41_59_/_0.72)] p-6 sm:p-8">
+<section class="rounded-3xl border border-white/10 bg-[rgb(51_65_85_/_0.6)] p-6 sm:p-8">
 	<div class="text-center">
 		<p class="text-xs font-semibold tracking-[0.16em] text-[var(--color-accent)] uppercase">
 			Schedule
@@ -30,7 +30,7 @@
 					</p>
 				</div>
 				<div
-					class="inline-flex items-center gap-1 rounded-full border border-white/20 bg-[rgb(15_23_42_/_0.8)] px-3 py-1 text-xs font-semibold text-[var(--text-primary)]"
+					class="inline-flex items-center gap-1 rounded-full border border-white/20 bg-[rgb(51_65_85_/_0.62)] px-3 py-1 text-xs font-semibold text-[var(--text-primary)]"
 				>
 					<MapPin size={12} />
 					Check back soon

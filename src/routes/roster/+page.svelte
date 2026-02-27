@@ -5,7 +5,7 @@
 	const placeholderSlots = [1, 2, 3, 4, 5, 6, 7, 8];
 </script>
 
-<section class="rounded-3xl border border-white/10 bg-[rgb(30_41_59_/_0.72)] p-6 sm:p-8">
+<section class="rounded-3xl border border-white/10 bg-[rgb(51_65_85_/_0.6)] p-6 sm:p-8">
 	<div class="text-center">
 		<p class="text-xs font-semibold tracking-[0.16em] text-[var(--color-accent)] uppercase">
 			Squad
@@ -21,7 +21,7 @@
 			<Card className="group hover:scale-105">
 				<div class="flex items-start gap-3">
 					<div
-						class="flex h-12 w-12 items-center justify-center rounded-full border border-white/20 bg-[rgb(15_23_42_/_0.88)] text-[var(--text-primary)]"
+						class="flex h-12 w-12 items-center justify-center rounded-full border border-white/20 bg-[rgb(51_65_85_/_0.66)] text-[var(--text-primary)]"
 					>
 						<UserRound size={20} />
 					</div>

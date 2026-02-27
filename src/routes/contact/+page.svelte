@@ -56,7 +56,7 @@
 					id="name"
 					name="name"
 					required
-					class="w-full rounded-md border border-white/20 bg-[rgb(15_23_42_/_0.9)] px-3 py-2 text-sm text-[var(--text-primary)] transition outline-none focus:border-[var(--color-accent)]"
+					class="w-full rounded-md border border-white/20 bg-[rgb(51_65_85_/_0.68)] px-3 py-2 text-sm text-[var(--text-primary)] transition outline-none focus:border-[var(--color-accent)]"
 				/>
 			</div>
 
@@ -71,7 +71,7 @@
 					name="email"
 					type="email"
 					required
-					class="w-full rounded-md border border-white/20 bg-[rgb(15_23_42_/_0.9)] px-3 py-2 text-sm text-[var(--text-primary)] transition outline-none focus:border-[var(--color-accent)]"
+					class="w-full rounded-md border border-white/20 bg-[rgb(51_65_85_/_0.68)] px-3 py-2 text-sm text-[var(--text-primary)] transition outline-none focus:border-[var(--color-accent)]"
 				/>
 			</div>
 
@@ -86,7 +86,7 @@
 					name="message"
 					required
 					rows="5"
-					class="w-full rounded-md border border-white/20 bg-[rgb(15_23_42_/_0.9)] px-3 py-2 text-sm text-[var(--text-primary)] transition outline-none focus:border-[var(--color-accent)]"
+					class="w-full rounded-md border border-white/20 bg-[rgb(51_65_85_/_0.68)] px-3 py-2 text-sm text-[var(--text-primary)] transition outline-none focus:border-[var(--color-accent)]"
 				></textarea>
 			</div>
 
