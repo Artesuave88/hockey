@@ -183,17 +183,6 @@
 		<div class="flex flex-wrap items-center justify-center gap-3 pt-1">
 			{@render actions?.()}
 		</div>
-		<p class="text-xs tracking-wide text-[var(--text-muted)]/85 sm:text-sm">
-			Website created by
-			<a
-				class="font-semibold text-[var(--color-accent)] underline decoration-transparent transition hover:decoration-current"
-				href="https://mds-web-beta.vercel.app/"
-				target="_blank"
-				rel="noopener noreferrer"
-			>
-				Michael Stevenson
-			</a>
-		</p>
 	</div>
 </section>
 

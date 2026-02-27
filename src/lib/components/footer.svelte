@@ -51,4 +51,17 @@
 			</a>
 		</div>
 	</div>
+	<div class="my-6 border-t border-white/10">
+		<p class="text-xs tracking-wide text-[var(--text-muted)]/85 sm:text-sm">
+			Website created by
+			<a
+				class="font-semibold text-[var(--color-accent)] underline decoration-transparent transition hover:decoration-current"
+				href="https://mds-web-beta.vercel.app/"
+				target="_blank"
+				rel="noopener noreferrer"
+			>
+				MDS Web Design
+			</a>
+		</p>
+	</div>
 </footer>
