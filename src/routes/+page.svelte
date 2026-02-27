@@ -4,24 +4,6 @@
 	import Hero from '$lib/components/hero.svelte';
 	import { CalendarDays, Mail, Newspaper, Users } from 'lucide-svelte';
 
-	const newsTeasers = [
-		{
-			title: 'Pre-season training starts soon – Feb 2026',
-			excerpt:
-				'Open skate and systems refresh sessions are planned for late February. New players can join the intro group.'
-		},
-		{
-			title: 'Friendly fixtures window opening',
-			excerpt:
-				'The club is lining up spring friendlies with local rec squads. Dates and opponents will be posted once confirmed.'
-		},
-		{
-			title: 'Community night at NIC area',
-			excerpt:
-				'Players, supporters, and families are invited for a relaxed post-session social meet-up in Nottingham.'
-		}
-	];
-
 	const quickLinks = [
 		{ label: 'About The Club', route: '/about', icon: Users },
 		{ label: 'Roster', route: '/roster', icon: Users },
@@ -70,16 +52,32 @@
 	</Card>
 
 	<div class="grid gap-4 sm:grid-cols-2 lg:col-span-2">
-		{#each newsTeasers as item (item.title)}
-			<Card>
-				<div class="flex items-center gap-2 text-[var(--color-accent)]">
-					<Newspaper size={16} />
-					<p class="text-[11px] font-semibold tracking-[0.12em] uppercase">Club Update</p>
-				</div>
-				<h3 class="mt-2 text-lg font-semibold text-[var(--text-primary)]">{item.title}</h3>
-				<p class="mt-2 text-sm leading-relaxed text-[var(--text-muted)]">{item.excerpt}</p>
-			</Card>
-		{/each}
+		<Card className="sm:col-span-2">
+			<div class="flex items-center gap-2 text-[var(--color-accent)]">
+				<Newspaper size={16} />
+				<p class="text-[11px] font-semibold tracking-[0.12em] uppercase">Latest News</p>
+			</div>
+			<h3 class="mt-2 text-lg font-semibold text-[var(--text-primary)]">Newsboard warming up</h3>
+			<p class="mt-2 text-sm leading-relaxed text-[var(--text-muted)]">
+				No published posts yet. First updates land here once the next skate cycle is announced.
+			</p>
+		</Card>
+		<Card>
+			<p class="text-[11px] font-semibold tracking-[0.12em] text-[var(--ice-blue)] uppercase">
+				Roster Feed
+			</p>
+			<p class="mt-2 text-sm leading-relaxed text-[var(--text-muted)]">
+				Player cards are intentionally hidden until the squad list is confirmed.
+			</p>
+		</Card>
+		<Card>
+			<p class="text-[11px] font-semibold tracking-[0.12em] text-[var(--ice-blue)] uppercase">
+				Fixture Feed
+			</p>
+			<p class="mt-2 text-sm leading-relaxed text-[var(--text-muted)]">
+				Fixtures will appear when dates are locked and posted by the club.
+			</p>
+		</Card>
 	</div>
 </section>
 
