@@ -2,7 +2,7 @@
 	import '../app.css';
 	import { afterNavigate } from '$app/navigation';
 	import { resolve } from '$app/paths';
-	import logo from '$lib/assets/logo.jpg';
+	import logo from '$lib/assets/logo.png';
 	import Footer from '$lib/components/footer.svelte';
 	import Logo from '$lib/components/logo.svelte';
 	import { CalendarDays, Home, Info, Mail, Menu, Users, X } from 'lucide-svelte';
@@ -32,7 +32,7 @@
 
 <svelte:head>
 	<link rel="icon" type="image/jpeg" href={logo} />
-	<!-- TODO: generate favicon.ico from src/lib/assets/logo.jpg for wider browser support -->
+	<!-- TODO: generate favicon.ico from src/lib/assets/logo.png for wider browser support -->
 	<title>{siteTitle}</title>
 	<meta name="description" content={siteDescription} />
 	<meta name="theme-color" content="#0F172A" />

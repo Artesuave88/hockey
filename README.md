@@ -4,7 +4,7 @@ Community-focused placeholder site for Nottingham Phantoms IHC, built with Svelt
 
 ## Branding Asset Note
 
-- Active logo source is `src/lib/assets/logo.jpg`.
+- Active logo source is `src/lib/assets/logo.png`.
 - If a newer logo export is provided, replace that file.
 - TODO: generate `favicon.ico` from the logo for broad browser compatibility.
 

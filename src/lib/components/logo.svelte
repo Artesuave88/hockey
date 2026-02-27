@@ -1,5 +1,5 @@
 <script lang="ts">
-	import logoSrc from '$lib/assets/logo.jpg';
+	import logoSrc from '$lib/assets/logo.png';
 
 	let {
 		size = 'md',
