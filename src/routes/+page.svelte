@@ -19,7 +19,7 @@
 >
 	{#snippet actions()}
 		<a
-			href="#contact-home"
+			href={resolve('/contact')}
 			class="cta-glow inline-flex items-center rounded-md border border-[var(--color-accent)] bg-[var(--color-accent)] px-5 py-2.5 text-sm font-semibold text-white transition duration-300 hover:scale-105 hover:bg-[var(--color-accent-strong)]"
 		>
 			Join / Get in Touch
