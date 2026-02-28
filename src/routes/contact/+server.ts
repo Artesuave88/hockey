@@ -14,21 +14,7 @@ const escapeHtml = (value: string): string =>
 		.replaceAll('"', '&quot;')
 		.replaceAll("'", '&#39;');
 
-const parseProviderErrorMessage = (raw: string): string => {
-	try {
-		const parsed = JSON.parse(raw) as { message?: unknown; error?: unknown };
-		if (typeof parsed.message === 'string' && parsed.message.trim()) {
-			return parsed.message.trim();
-		}
-		if (typeof parsed.error === 'string' && parsed.error.trim()) {
-			return parsed.error.trim();
-		}
-	} catch {
-		// Fall back to plain text.
-	}
-
-	return raw.trim() || 'Unknown email provider error.';
-};
+const GENERIC_SEND_ERROR = 'Unable to send your message right now. Please try again later.';
 
 export const POST: RequestHandler = async ({ request, fetch, url }) => {
 	const formData = await request.formData();
@@ -48,11 +34,17 @@ export const POST: RequestHandler = async ({ request, fetch, url }) => {
 	const toEmail = getTextField(env.TRIAL_TO_EMAIL);
 
 	if (provider !== 'resend') {
-		return json({ error: 'Email provider is not configured.' }, { status: 500 });
+		console.error('Email provider is not configured. TRIAL_PROVIDER must be "resend".');
+		return json({ error: GENERIC_SEND_ERROR }, { status: 500 });
 	}
 
 	if (!apiKey || !fromEmail || !toEmail) {
-		return json({ error: 'Email environment variables are missing.' }, { status: 500 });
+		console.error('Email environment variables are missing.', {
+			hasApiKey: Boolean(apiKey),
+			hasFromEmail: Boolean(fromEmail),
+			hasToEmail: Boolean(toEmail)
+		});
+		return json({ error: GENERIC_SEND_ERROR }, { status: 500 });
 	}
 
 	const siteUrl = getTextField(env.TRIAL_SITE_URL) || url.origin;
@@ -150,47 +142,13 @@ ${message}`;
 		});
 	} catch (error) {
 		console.error('Resend request network failure:', error);
-		return json({ error: 'Could not reach email provider. Please try again shortly.' }, { status: 502 });
+		return json({ error: GENERIC_SEND_ERROR }, { status: 502 });
 	}
 
 	if (!resendResponse.ok) {
 		const resendErrorRaw = await resendResponse.text();
-		const resendErrorMessage = parseProviderErrorMessage(resendErrorRaw);
-		const normalizedMessage = resendErrorMessage.toLowerCase();
-
 		console.error('Resend request failed:', resendResponse.status, resendErrorRaw);
-
-		if (
-			normalizedMessage.includes('test mode') ||
-			normalizedMessage.includes('testing emails') ||
-			normalizedMessage.includes('own email') ||
-			normalizedMessage.includes('onboarding@resend.dev')
-		) {
-			return json(
-				{
-					error:
-						'Resend is in test mode. Use your Resend account email as TRIAL_TO_EMAIL, or verify a domain and set TRIAL_FROM_EMAIL to that domain.'
-				},
-				{ status: 502 }
-			);
-		}
-
-		if (normalizedMessage.includes('verify') && normalizedMessage.includes('domain')) {
-			return json(
-				{
-					error:
-						'Resend requires a verified domain for this sender. Verify your domain in Resend and set TRIAL_FROM_EMAIL to that domain.'
-				},
-				{ status: 502 }
-			);
-		}
-
-		return json(
-			{
-				error: `Email provider rejected the request: ${resendErrorMessage}`
-			},
-			{ status: 502 }
-		);
+		return json({ error: GENERIC_SEND_ERROR }, { status: 502 });
 	}
 
 	return json({ success: true });

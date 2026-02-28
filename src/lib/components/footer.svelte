@@ -51,7 +51,7 @@
 			</a>
 		</div>
 	</div>
-	<div class="my-6 border-t border-white/10">
+	<!-- <div class="my-6 border-t border-white/10">
 		<p class="text-xs tracking-wide text-[var(--text-muted)]/85 sm:text-sm">
 			Website created by
 			<a
@@ -63,5 +63,5 @@
 				MDS Web Design
 			</a>
 		</p>
-	</div>
+	</div> -->
 </footer>
