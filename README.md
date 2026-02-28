@@ -24,6 +24,7 @@ The contact form email endpoint expects:
 - `RESEND_API_KEY`
 - `TRIAL_FROM_EMAIL`
 - `TRIAL_TO_EMAIL`
+- `TRIAL_SITE_URL` (optional, used for absolute logo URL in email)
 
 ## Checks
 
