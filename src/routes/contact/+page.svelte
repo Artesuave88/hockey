@@ -1,16 +1,32 @@
 <script lang="ts">
+	import { resolve } from '$app/paths';
 	import Card from '$lib/components/card.svelte';
 	import { Instagram, Mail, Twitter } from 'lucide-svelte';
 
-	const handleSubmit = (event: SubmitEvent) => {
+	const handleSubmit = async (event: SubmitEvent) => {
 		event.preventDefault();
 
 		const form = event.currentTarget as HTMLFormElement;
-		const payload = Object.fromEntries(new FormData(form).entries());
+		const formData = new FormData(form);
 
-		console.log('Contact message submitted:', payload);
-		alert('Message sent!');
-		form.reset();
+		try {
+			const response = await fetch(resolve('/contact'), {
+				method: 'POST',
+				body: formData
+			});
+
+			if (!response.ok) {
+				const body = (await response.json().catch(() => ({}))) as { error?: string };
+				alert(body.error ?? 'Unable to send your message right now.');
+				return;
+			}
+
+			alert('Message sent!');
+			form.reset();
+		} catch (error) {
+			console.error('Contact form submission failed:', error);
+			alert('Unable to send your message right now.');
+		}
 	};
 </script>
 
@@ -81,6 +97,22 @@
 					id="email"
 					name="email"
 					type="email"
+					required
+					class="w-full rounded-md border border-white/20 bg-[rgb(51_65_85_/_0.68)] px-3 py-2 text-sm text-[var(--text-primary)] transition outline-none focus:border-[var(--color-accent)]"
+				/>
+			</div>
+
+			<div>
+				<label
+					for="mobile"
+					class="mb-1 block text-xs font-semibold tracking-wide text-[var(--text-muted)] uppercase"
+					>Mobile Number</label
+				>
+				<input
+					id="mobile"
+					name="mobile"
+					type="tel"
+					autocomplete="tel"
 					required
 					class="w-full rounded-md border border-white/20 bg-[rgb(51_65_85_/_0.68)] px-3 py-2 text-sm text-[var(--text-primary)] transition outline-none focus:border-[var(--color-accent)]"
 				/>

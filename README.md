@@ -12,8 +12,18 @@ Community-focused placeholder site for Nottingham Phantoms IHC, built with Svelt
 
 ```bash
 npm install
+cp .env.example .env
 npm run dev
 ```
+
+## Contact Email Environment Variables
+
+The contact form email endpoint expects:
+
+- `TRIAL_PROVIDER` (set to `resend`)
+- `RESEND_API_KEY`
+- `TRIAL_FROM_EMAIL`
+- `TRIAL_TO_EMAIL`
 
 ## Checks
 
