@@ -43,11 +43,11 @@
 
 		<div class="mt-5 space-y-3 text-sm">
 			<a
-				href="mailto:nottinghamphantoms@example.com"
+				href="mailto:nottinghamphantoms@outlook.com"
 				class="inline-flex items-center gap-2 text-[var(--text-primary)] transition duration-300 hover:text-[var(--color-accent)]"
 			>
 				<Mail size={16} />
-				nottinghamphantoms@example.com
+				nottinghamphantoms@outlook.com
 			</a>
 			<a
 				href="https://x.com/NottmPhantoms"

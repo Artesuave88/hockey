@@ -43,7 +43,7 @@
 				<span>@NottmPhantoms</span>
 			</a>
 			<a
-				href="mailto:nottinghamphantoms@example.com"
+				href="mailto:nottinghamphantoms@outlook.com"
 				class="inline-flex items-center gap-1.5 rounded-md border border-white/20 bg-white/5 px-3 py-1.5 text-xs text-[var(--text-primary)] transition duration-300 hover:scale-105 hover:border-[var(--color-accent)] hover:text-[var(--color-accent)]"
 			>
 				<Mail size={14} />

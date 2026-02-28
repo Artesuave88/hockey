@@ -14,6 +14,22 @@ const escapeHtml = (value: string): string =>
 		.replaceAll('"', '&quot;')
 		.replaceAll("'", '&#39;');
 
+const parseProviderErrorMessage = (raw: string): string => {
+	try {
+		const parsed = JSON.parse(raw) as { message?: unknown; error?: unknown };
+		if (typeof parsed.message === 'string' && parsed.message.trim()) {
+			return parsed.message.trim();
+		}
+		if (typeof parsed.error === 'string' && parsed.error.trim()) {
+			return parsed.error.trim();
+		}
+	} catch {
+		// Fall back to plain text.
+	}
+
+	return raw.trim() || 'Unknown email provider error.';
+};
+
 export const POST: RequestHandler = async ({ request, fetch, url }) => {
 	const formData = await request.formData();
 
@@ -111,26 +127,70 @@ Mobile: ${mobile}
 Message:
 ${message}`;
 
-	const resendResponse = await fetch('https://api.resend.com/emails', {
-		method: 'POST',
-		headers: {
-			Authorization: `Bearer ${apiKey}`,
-			'Content-Type': 'application/json'
-		},
-		body: JSON.stringify({
-			from: fromEmail,
-			to: [toEmail],
-			reply_to: email,
-			subject: `New Contact Form Message from ${name}`,
-			html,
-			text
-		})
-	});
+	const formattedFrom = fromEmail.includes('<')
+		? fromEmail
+		: `Nottingham Phantoms IHC <${fromEmail}>`;
+
+	let resendResponse: Response;
+	try {
+		resendResponse = await fetch('https://api.resend.com/emails', {
+			method: 'POST',
+			headers: {
+				Authorization: `Bearer ${apiKey}`,
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify({
+				from: formattedFrom,
+				to: [toEmail],
+				reply_to: email,
+				subject: `New Contact Form Message from ${name}`,
+				html,
+				text
+			})
+		});
+	} catch (error) {
+		console.error('Resend request network failure:', error);
+		return json({ error: 'Could not reach email provider. Please try again shortly.' }, { status: 502 });
+	}
 
 	if (!resendResponse.ok) {
-		const resendError = await resendResponse.text();
-		console.error('Resend request failed:', resendResponse.status, resendError);
-		return json({ error: 'Email delivery failed. Please try again shortly.' }, { status: 502 });
+		const resendErrorRaw = await resendResponse.text();
+		const resendErrorMessage = parseProviderErrorMessage(resendErrorRaw);
+		const normalizedMessage = resendErrorMessage.toLowerCase();
+
+		console.error('Resend request failed:', resendResponse.status, resendErrorRaw);
+
+		if (
+			normalizedMessage.includes('test mode') ||
+			normalizedMessage.includes('testing emails') ||
+			normalizedMessage.includes('own email') ||
+			normalizedMessage.includes('onboarding@resend.dev')
+		) {
+			return json(
+				{
+					error:
+						'Resend is in test mode. Use your Resend account email as TRIAL_TO_EMAIL, or verify a domain and set TRIAL_FROM_EMAIL to that domain.'
+				},
+				{ status: 502 }
+			);
+		}
+
+		if (normalizedMessage.includes('verify') && normalizedMessage.includes('domain')) {
+			return json(
+				{
+					error:
+						'Resend requires a verified domain for this sender. Verify your domain in Resend and set TRIAL_FROM_EMAIL to that domain.'
+				},
+				{ status: 502 }
+			);
+		}
+
+		return json(
+			{
+				error: `Email provider rejected the request: ${resendErrorMessage}`
+			},
+			{ status: 502 }
+		);
 	}
 
 	return json({ success: true });
